@@ -2,6 +2,7 @@ CREATE TABLE hybowar_characters (
   id SERIAL PRIMARY KEY,
   character_name TEXT NOT NULL,
   character_id TEXT NOT NULL,
+  status TEXT NOT NULL,
   age TEXT NOT NULL,
   location TEXT NOT NULL,
   personal_combat TEXT NOT NULL,
@@ -11,6 +12,6 @@ CREATE TABLE hybowar_characters (
   heroism TEXT NOT NULL,
   intrigue TEXT NOT NULL,
   magic TEXT NOT NULL,
-  game_id INTEGER
-    REFERENCES hybowar_games(id) ON DELETE CASCADE NOT NULL
+  position_id INTEGER
+    REFERENCES hybowar_positions(id) ON DELETE CASCADE NOT NULL
 )

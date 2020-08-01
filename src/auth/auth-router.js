@@ -14,8 +14,9 @@ authRouter
         return res.status(400).json({
           error: `Missing '${key}' in request body`
         })
+
     AuthService.getUserWithUserName(
-      req.app.get('db')('hybowar_helper_users'),
+      req.app.get('db')('hybowar_users'),
       loginUser.user_name
     )
       .then(dbUser => {

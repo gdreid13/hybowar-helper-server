@@ -5,7 +5,7 @@ const { requireAuth } = require('../auth/basic-auth')
 const charactersRouter = express.Router()
 
 charactersRouter
-  .route('/:position')
+  .route('/positions/:position')
   .all(requireAuth)
   .get((req, res, next) => {
     CharactersService.getAllCharacters(req.app.get('db'))
@@ -15,7 +15,7 @@ charactersRouter
       .catch(next)
   })
 
-  .route('/:position/:character_id')
+  .route('/positions/:position/:character_id')
   .all(requireAuth)
   .all(checkCharacterExists)
   .get((req, res) => {

@@ -7,11 +7,17 @@ const PositionsService = {
     .select(
       'pos.id',
       'pos.game_number',
-      'pos.position',
+      'pos.nation',
       'pos.user_id'
     )
     .groupBy('pos.id')
   },
+
+  insertPosition(db, newPosition) {
+    return db
+      .insert(newPosition)
+      .into('hybowar_positions')
+  }
 }
 
 module.exports = PositionsService

@@ -11,7 +11,7 @@ VALUES
   ('test_user', 'password'),
   ('test_user1', 'password1');
 
-INSERT INTO hybowar_positions (game_number, position, user_id)
+INSERT INTO hybowar_positions (game_number, nation, user_id)
 VALUES
   ('958', 'Border Kingdom', '1');
 

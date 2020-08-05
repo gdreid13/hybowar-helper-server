@@ -7,6 +7,7 @@ const { NODE_ENV } = require('./config')
 const authRouter = require('./auth/auth-router')
 const usersRouter = require('./users/users-router')
 const positionsRouter = require('./positions/positions-router')
+const charactersRouter = require('./characters/characters-router')
 
 const app = express()
 
@@ -21,6 +22,7 @@ app.use(cors())
 app.use('/auth', authRouter)
 app.use('/users', usersRouter)
 app.use('/positions', positionsRouter)
+app.use('/characters', charactersRouter)
 
 app.get('/', (req, res) => {
   res.send('Hello, world!')

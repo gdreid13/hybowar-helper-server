@@ -1,12 +1,13 @@
 const path = require('path')
 const express = require('express')
 const PositionsService = require('./positions-service')
+const { requireAuth } = require('../auth/jwt-auth')
 
 const positionsRouter = express.Router()
 const jsonBodyParser = express.json()
 
 positionsRouter
-  .get('/:userId', (req, res, next) => {
+  .get('/:userId', requireAuth, (req, res, next) => {
     PositionsService.getAllPositions(req.app.get('db')('hybowar_positions'))
       .then(positions => {
         res.json(positions.map(position => {
@@ -18,8 +19,7 @@ positionsRouter
       })
       .catch(next);
   })
-
-  .post('/:userId', jsonBodyParser, (req, res, next) => {
+  .post('/:userId', requireAuth, jsonBodyParser, (req, res, next) => {
     const { game_number, nation, user_id } = req.body
     const newPosition = { game_number, nation, user_id }
 
@@ -38,7 +38,7 @@ positionsRouter
           .status(201)
           .json(position)
 
-          
+
       })
       .catch(next)
   })

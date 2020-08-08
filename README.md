@@ -14,3 +14,4 @@ Migrate db `npm run migrate`
 
 When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
 
+Interact with production db `heroku pg:psql`

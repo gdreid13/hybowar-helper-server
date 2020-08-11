@@ -1,4 +1,5 @@
 const xss = require('xss')
+const knex = require('knex')
 
 const CharactersService = {
   getAllCharacters(db) {
@@ -27,7 +28,13 @@ const CharactersService = {
     return db
     .insert(newCharacter)
     .into('hybowar_characters')
-  }
+  },
+
+  updateCharacter(knex, id, newCharacterFields) {
+    return knex('hybowar_characters')
+      .where({ id })
+      .update(newCharacterFields)
+  },
 }
 
 module.exports = CharactersService

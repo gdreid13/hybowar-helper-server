@@ -8,8 +8,8 @@ TRUNCATE
 
 INSERT INTO hybowar_users (user_name, password)
 VALUES
-  ('test_user', 'password'),
-  ('test_user1', 'password1');
+  ('thisguy', '$2a$12$BnbDYs5pHF.KBLs6SHkrv.g0AryqPd189JlyluNkVhqn2C.zhfDWi'),
+  ('thatguy', '$2a$12$QiHiTiuTVDt./YQWPO/7W.Ku4SB6Wvf4z7N9m.0HD6y0IoHPJINqC');
 
 INSERT INTO hybowar_positions (game_number, nation, user_id)
 VALUES

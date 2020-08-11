@@ -6,9 +6,11 @@ Start nodemon for the application `npm run dev`
 
 Run the tests `npm test`
 
-Seed db `psql -d hybowar-helper -f ./seeds/seed.hybowar_helper.sql`
-
 Migrate db `npm run migrate`
+
+Seed db `psql -d hybowar-helper -f ./seeds/seed.hybowar-helper.sql`
+
+
 
 ## Deploying
 

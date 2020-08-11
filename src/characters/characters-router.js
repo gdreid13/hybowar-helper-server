@@ -76,7 +76,35 @@ charactersRouter
           .status(201)
           .json(character)
       })
-      .catch(next)
+      .catch(next);
+  })
+  .patch('/:userId/:positionId/:characterId', requireAuth, jsonBodyParser, (req, res, next) => {
+    const characterToUpdate = {
+      status,
+      age,
+      location,
+      personal_combat,
+      diplomacy,
+      rulership,
+      military_command,
+      heroism,
+      intrigue,
+      magic,
+    } = req.body
+    const numberOfValues = Object.values(characterToUpdate).filter(Boolean).length
+    if (numberOfValues === 0) {
+      return res.status(400).json({
+        error: {
+          message: `Request body must contain character traits to modify`
+        }
+      })
+    }
+    CharactersService.updateCharacter(
+      req.app.get('db'),
+      req.params.article_id,
+      articleToUpdate
+    )
+
   })
 
 module.exports = charactersRouter

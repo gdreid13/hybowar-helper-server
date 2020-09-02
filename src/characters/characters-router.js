@@ -30,36 +30,7 @@ charactersRouter
       .catch(next);
   })
   .post('/:userId/:positionId', requireAuth, jsonBodyParser, (req, res, next) => {
-    const {
-      character_name,
-      character_id,
-      status,
-      age,
-      location,
-      personal_combat,
-      diplomacy,
-      rulership,
-      military_command,
-      heroism,
-      intrigue,
-      magic,
-      position_id
-    } = req.body
-    const newCharacter = {
-      character_name,
-      character_id,
-      status,
-      age,
-      location,
-      personal_combat,
-      diplomacy,
-      rulership,
-      military_command,
-      heroism,
-      intrigue,
-      magic,
-      position_id
-    }
+    const { newCharacter } = req.body
 
     for (const [key, value] of Object.entries(newCharacter))
       if (value == null)

@@ -8,10 +8,11 @@ const jsonBodyParser = express.json()
 
 positionsRouter
   .get('/:userId', requireAuth, (req, res, next) => {
-    PositionsService.getAllPositions(req.app.get('db')('hybowar_positions'))
+    PositionsService.getPositions(req.app.get('db')('hybowar_positions'))
       .then(positions => {
         res.json(positions.map(position => {
           return {
+            position_id: position.id,
             game_number: position.game_number,
             nation: position.nation
           }

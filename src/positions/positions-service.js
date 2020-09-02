@@ -1,7 +1,7 @@
 const xss = require('xss')
 
 const PositionsService = {
-  getAllPositions(db) {
+  getPositions(db) {
   return db
     .from('hybowar_positions AS pos')
     .select(

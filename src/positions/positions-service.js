@@ -17,7 +17,20 @@ const PositionsService = {
     return db
       .insert(newPosition)
       .into('hybowar_positions')
+  },
+
+  deletePosition(db, positionId) {
+    return db
+      .where({ positionId })
+      .delete()
+  },
+
+  updatePosition(db, positionId, newPositionFields) {
+    return db
+      .where({ positionId })
+      .update(newPositionFields)
   }
+  
 }
 
 module.exports = PositionsService

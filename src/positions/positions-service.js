@@ -1,9 +1,9 @@
-const xss = require('xss')
-
 const PositionsService = {
-  getPositions(db) {
+  getPositionsByUser(db, userId) {
   return db
     .from('hybowar_positions AS pos')
+    .where('user_id', userId)
+    .first()
     .select(
       'pos.id',
       'pos.game_number',

@@ -1,4 +1,3 @@
-const path = require('path')
 const express = require('express')
 const PositionsService = require('./positions-service')
 const { requireAuth } = require('../auth/jwt-auth')
@@ -8,7 +7,10 @@ const jsonBodyParser = express.json()
 
 positionsRouter
   .get('/:userId', requireAuth, (req, res, next) => {
-    PositionsService.getPositions(req.app.get('db')('hybowar_positions'))
+    PositionsService.getPositionsByUser(
+      req.app.get('db')('hybowar_positions'),
+      userId
+      )
       .then(positions => {
         res.json(positions.map(position => {
           return {

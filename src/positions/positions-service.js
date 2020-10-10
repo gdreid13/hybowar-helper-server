@@ -3,7 +3,6 @@ const PositionsService = {
   return db
     .from('hybowar_positions AS pos')
     .where('user_id', userId)
-    .first()
     .select(
       'pos.id',
       'pos.game_number',

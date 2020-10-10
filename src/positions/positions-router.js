@@ -1,24 +1,28 @@
 const express = require('express')
 const PositionsService = require('./positions-service')
 const { requireAuth } = require('../auth/jwt-auth')
+const xss = require('xss')
 
 const positionsRouter = express.Router()
 const jsonBodyParser = express.json()
 
+const serializePosition = position => ({
+  id: position.id,
+  game_number: position.game_number,
+  nation: xss(position.nation),
+  user_id: position.user_id
+})
+
 positionsRouter
   .get('/:userId', requireAuth, (req, res, next) => {
+    const userId = req.params.userId
     PositionsService.getPositionsByUser(
       req.app.get('db')('hybowar_positions'),
       userId
       )
       .then(positions => {
-        res.json(positions.map(position => {
-          return {
-            position_id: position.id,
-            game_number: position.game_number,
-            nation: position.nation
-          }
-        }))
+        console.log(positions)
+        res.json(positions.map(serializePosition))
       })
       .catch(next);
   })

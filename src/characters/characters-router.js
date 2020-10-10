@@ -8,7 +8,12 @@ const jsonBodyParser = express.json()
 
 charactersRouter
   .get('/:userId/:positionId', requireAuth, (req, res, next) => {
-    CharactersService.getAllCharacters(req.app.get('db')('hybowar_characters'))
+    console.log(req.params)
+    const positionId = req.params.positionId
+    CharactersService.getCharactersByPos(
+      req.app.get('db')('hybowar_characters'),
+      positionId
+      )
       .then(characters => {
         res.json(characters.map(char => {
           return {

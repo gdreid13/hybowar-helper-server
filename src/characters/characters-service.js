@@ -2,9 +2,10 @@ const xss = require('xss')
 const knex = require('knex')
 
 const CharactersService = {
-  getAllCharacters(db) {
+  getCharactersByPos(db, positionId) {
   return db
     .from('hybowar_characters AS char')
+    .where('position_id', positionId)
     .select(
       'char.id',
       'char.character_name',

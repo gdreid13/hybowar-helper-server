@@ -19,10 +19,10 @@ app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 
-app.use('/auth', authRouter)
-app.use('/users', usersRouter)
-app.use('/positions', positionsRouter)
-app.use('/characters', charactersRouter)
+app.use('/api/auth', authRouter)
+app.use('/api/users', usersRouter)
+app.use('/api/positions', positionsRouter)
+app.use('/api/characters', charactersRouter)
 
 app.get('/', (req, res) => {
   res.send('Hello, world!')

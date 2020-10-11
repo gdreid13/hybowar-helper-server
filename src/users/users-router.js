@@ -17,7 +17,9 @@ usersRouter
     const passwordError = UsersService.validatePassword(password)
 
     if (passwordError)
-      return res.status(400).json({ error: passwordError })
+      return res.status(400).json({ 
+        error: 'Passwords must be between 8 and 72 characters, must not start or end with empty spaces, and contain 1 upper case, lower case, number, and special character' 
+      })
 
     UsersService.hasUserWithUserName(
       req.app.get('db')('hybowar_users'),

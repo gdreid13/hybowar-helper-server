@@ -8,7 +8,8 @@ Run the tests `npm test`
 
 Migrate db `npm run migrate`
 
-Seed db `psql -d hybowar-helper -f ./seeds/seed.hybowar-helper.sql`
+Seed db local `psql -d hybowar-helper -f ./seeds/seed.hybowar-helper.sql`
+Seed db heroku `heroku psql -f ./seeds/seed.hybowar-helper.sql`
 
 
 

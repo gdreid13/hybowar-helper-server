@@ -12,7 +12,8 @@
     "start": "node src/server.js",
     "predeploy": "yarn audit",
     "deploy": "git push heroku master",
-    "postdeploy": "npm run migrate:production"
+    "postdeploy": "npm run migrate:production",
+    "seed": "heroku psql -f ./seeds/seed.hybowar-helper.sql"
   },
   "keywords": [],
   "engines": {

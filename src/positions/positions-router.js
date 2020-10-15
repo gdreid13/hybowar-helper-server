@@ -2,6 +2,7 @@ const express = require('express')
 const PositionsService = require('./positions-service')
 const { requireAuth } = require('../auth/jwt-auth')
 const xss = require('xss')
+const path = require('path')
 
 const positionsRouter = express.Router()
 const jsonBodyParser = express.json()
@@ -21,7 +22,6 @@ positionsRouter
       userId
       )
       .then(positions => {
-        console.log(positions)
         res.json(positions.map(serializePosition))
       })
       .catch(next);
@@ -43,9 +43,8 @@ positionsRouter
       .then(position => {
         res
           .status(201)
+          .location(path.posix.join(req.originalUrl, `/${position.user_id}`))
           .json(position)
-
-
       })
       .catch(next)
   })

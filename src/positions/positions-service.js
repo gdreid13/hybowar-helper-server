@@ -16,6 +16,10 @@ const PositionsService = {
     return db
       .insert(newPosition)
       .into('hybowar_positions')
+      .returning('*')
+      .then(rows => {
+        return rows[0]
+      })
   },
 
   deletePosition(db, positionId) {

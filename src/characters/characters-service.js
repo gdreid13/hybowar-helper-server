@@ -3,32 +3,36 @@ const knex = require('knex')
 
 const CharactersService = {
   getCharactersByPos(db, positionId) {
-  return db
-    .from('hybowar_characters AS char')
-    .where('position_id', positionId)
-    .select(
-      'char.id',
-      'char.character_name',
-      'char.character_id',
-      'char.status',
-      'char.age',
-      'char.location',
-      'char.personal_combat',
-      'char.diplomacy',
-      'char.rulership',
-      'char.military_command',
-      'char.heroism',
-      'char.intrigue',
-      'char.magic',
-      'char.position_id'
-    )
-    .groupBy('char.id')
+    return db
+      .from('hybowar_characters AS char')
+      .where('position_id', positionId)
+      .select(
+        'char.id',
+        'char.character_name',
+        'char.character_id',
+        'char.status',
+        'char.age',
+        'char.location',
+        'char.personal_combat',
+        'char.diplomacy',
+        'char.rulership',
+        'char.military_command',
+        'char.heroism',
+        'char.intrigue',
+        'char.magic',
+        'char.position_id'
+      )
+      .groupBy('char.id')
   },
 
   insertCharacter(db, newCharacter) {
     return db
-    .insert(newCharacter)
-    .into('hybowar_characters')
+      .insert(newCharacter)
+      .into('hybowar_characters')
+      .returning('*')
+      .then(rows => {
+        return rows[0]
+      })
   },
 
   updateCharacter(knex, id, newCharacterFields) {

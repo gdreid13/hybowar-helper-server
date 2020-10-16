@@ -2,7 +2,7 @@ const knex = require('knex')
 const app = require('../src/app')
 const jwt = require('jsonwebtoken')
 
-describe('Hyborian War Helper API:', function () {
+describe('Character routes:', function () {
   let db;
   let users = [
     {
@@ -112,92 +112,6 @@ describe('Hyborian War Helper API:', function () {
   ));
 
   after('disconnect from the database', () => db.destroy());
-
-  describe('POST /api/users', () => {
-    it('should allow a user to register with status 201', () => {
-
-      const newUser = {
-        'user_name': 'demo4',
-        'password': 'Ji!Indur-04'
-      };
-
-      return supertest(app)
-        .post('/api/users')
-        .send(newUser)
-        .expect(201)
-        .expect(res => {
-          expect(res.body).to.be.a('object');
-          expect(res.body).to.include.keys('id', 'user_name', 'date_created');
-          expect(res.body.user_name).to.equal(newUser.user_name);
-        })
-    })
-  })
-
-  describe('GET /api/positions/:userId', () => {
-    beforeEach('insert some users', () => {
-      return db('hybowar_users').insert(users);
-    })
-    beforeEach('insert some positions', () => {
-      return db('hybowar_positions').insert(positions);
-    })
-
-    it('should return an array of positions for that user id', () => {
-      const userId = 1
-      const user = {
-        'user_name': 'demo1',
-        'password': 'password'
-      }
-      const token = jwt.sign({ user_id: user.id }, process.env.JWT_SECRET, {
-        subject: user.user_name,
-        algorithm: 'HS256',
-      })
-      return supertest(app)
-        .get(`/api/positions/${userId}`)
-        .set('Authorization', `Bearer ${token}`)
-        .expect(res => {
-          expect(res.body).to.be.a('array');
-          res.body.forEach((position) => {
-            expect(position).to.be.a('object');
-            expect(position).to.include.keys('id', 'game_number', 'nation', 'user_id')
-          })
-        })
-    })
-  })
-
-  describe('POST /api/positions/:userId', () => {
-    beforeEach('insert some users', () => {
-      return db('hybowar_users').insert(users);
-    })
-
-    it('should allow the user to post with a status 201', () => {
-      const newPosition = {
-        'game_number': 999,
-        'nation': 'Nemedia',
-        'user_id': 1
-      };
-      const userId = 1
-      const user = {
-        'user_name': 'demo1',
-        'password': 'password'
-      }
-      const token = jwt.sign({ user_id: user.id }, process.env.JWT_SECRET, {
-        subject: user.user_name,
-        algorithm: 'HS256',
-      })
-      return supertest(app)
-        .post(`/api/positions/${userId}`)
-        .set('Authorization', `Bearer ${token}`)
-        .send(newPosition)
-        .expect(201)
-        .expect(res => {
-          expect(res.body).to.be.a('object');
-          expect(res.body).to.include.keys('id', 'game_number', 'nation', 'user_id');
-          expect(res.body.game_number).to.equal(newPosition.game_number);
-          expect(res.body.nation).to.equal(newPosition.nation);
-          expect(res.body.user_id).to.equal(newPosition.user_id);
-        })
-    })
-  })
 
   describe('GET /api/characters/:userId/:positionId', () => {
     beforeEach('insert some users', () => {

@@ -18,10 +18,15 @@ https://github.com/gdreid13/hybowar-client
 
 ## To set up:
 yarn OR npm i / npm install
+
 ** npm is NOT recommended due to difficulties with migration **
+
 createdb hybowar-helper-server
+
 npm run migrate
+
 Seed db local `psql -d hybowar-helper -f ./seeds/seed.hybowar-helper.sql`
+
 Seed db heroku `heroku psql -f ./seeds/seed.hybowar-helper.sql`
 
 ## Endpoints:

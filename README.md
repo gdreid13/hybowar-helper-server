@@ -5,7 +5,7 @@ and GET and POST requests for characters and positions with the proper
 authentication.
 
 ## Live: 
-https://https://hybowar-client.vercel.app
+https://hybowar-client.vercel.app
 
 ## Back-end repo:
 https://github.com/gdreid13/hybowar-client
@@ -54,19 +54,19 @@ Seed db heroku `heroku psql -f ./seeds/seed.hybowar-helper.sql`
 * react-test-renderer(-D)
 
 ## Landing page
-![Landing page](https://github.com/gdreid13/calorie-counter-client/blob/master/screenshots/dashboard.JPG)
+![Landing page](https://github.com/gdreid13/hybowar-client/blob/master/screenshots/dashboard.JPG)
 
 ## Registration
-![Registration](https://github.com/gdreid13/calorie-counter-client/blob/master/screenshots/register.JPG)
+![Registration](https://github.com/gdreid13/hybowar-client/blob/master/screenshots/register.JPG)
 
 ## Position selection
-![Position selection](https://github.com/gdreid13/calorie-counter-client/blob/master/screenshots/pos-select.JPG)
+![Position selection](https://github.com/gdreid13/hybowar-client/blob/master/screenshots/pos-select.JPG)
 
 ## Character display
-![Character display](https://github.com/gdreid13/calorie-counter-client/blob/master/screenshots/char-display.JPG)
+![Character display](https://github.com/gdreid13/hybowar-client/blob/master/screenshots/char-display.JPG)
 
 ## Character entry
-![Character entry](https://github.com/gdreid13/calorie-counter-client/blob/master/screenshots/char-entry.JPG)
+![Character entry](https://github.com/gdreid13/hybowar-client/blob/master/screenshots/char-entry.JPG)
 
 ## Future developments
 * Allow user to organize characters by statistic

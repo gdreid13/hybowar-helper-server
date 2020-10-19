@@ -10,6 +10,6 @@ module.exports = {
   TEST_DATABASE_URL: process.env.TEST_DATABASE_URL || 'postgresql://postgres@localhost/hybowar-helper-test',
   JWT_SECRET: process.env.JWT_SECRET || 'not-so-secret',
   CLIENT_ORIGIN: 
-  'https://hybowar-client.vercel.app'
-  // 'http://localhost:3000'
+  // 'https://hybowar-client.vercel.app'
+  'http://localhost:3000'
 }

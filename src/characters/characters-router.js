@@ -16,6 +16,7 @@ charactersRouter
       .then(characters => {
         res.json(characters.map(char => {
           return {
+            id: char.id,
             character_name: char.character_name,
             character_id: char.character_id,
             status: char.status,
